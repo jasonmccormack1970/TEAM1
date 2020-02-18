@@ -43,11 +43,7 @@ function employees() {
                             <div className="card">
                                 <div className="card-body" style={CARD_STYLE}>
                                     <h5 className="card-title text-muted">
-<<<<<<< HEAD
-                                        GraphQL resolver returning "ALL" users from Postgres table
-=======
                                         GraphQL resolver returning all employees from Postgres table
->>>>>>> origin/TEAM1_LIGHTS
                                     </h5>
                                     <div>
                                         <Table striped bordered hover size="sm">
