@@ -22,6 +22,12 @@ module.exports = (pgPool) => {
             });
         },
 
+        getAllEngineers() {
+            return pgPool.query(`select * from employee where employee_role like '%engineer%'`).then((res) => {
+                return humps.camelizeKeys(res.rows);
+            });
+        },
+
         getUser(apiKey) {
             return pgPool
                 .query(
