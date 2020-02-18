@@ -17,7 +17,6 @@ const MeType = require('./types/me');
 const LaunchType = require('./types/launch');
 const CustomerType = require('./types/customer');
 const UserType = require('./types/users');
-const EmployeeType = require('./types/employee');
 const TasksType = require('./types/task');
 const EmployeeType = require('./types/employee');
 
