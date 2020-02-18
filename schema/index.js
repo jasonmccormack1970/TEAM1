@@ -17,6 +17,7 @@ const MeType = require('./types/me');
 const LaunchType = require('./types/launch');
 const CustomerType = require('./types/customer');
 const UserType = require('./types/users');
+const EmployeeType = require('./types/employee');
 const TasksType = require('./types/task');
 
 // The root query type is where in the data graph begins
@@ -52,6 +53,14 @@ const RootQueryType = new GraphQLObjectType({
             description: 'list all users from from Prostgres user table',
             resolve: (obj, args, { pgPool }) => {
                 return pgdb(pgPool).getAllUsers();
+            },
+        },
+
+        Employees: {
+            type: new GraphQLList(EmployeeType),
+            description: 'list all employees from Prostgres employees table',
+            resolve: (obj, args, { pgPool }) => {
+                return pgdb(pgPool).getAllEmployees();
             },
         },
 

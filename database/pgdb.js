@@ -16,6 +16,12 @@ module.exports = (pgPool) => {
             });
         },
 
+        getAllEmployees() {
+            return pgPool.query(`select * from employee`).then((res) => {
+                return humps.camelizeKeys(res.rows);
+            });
+        },
+
         getUser(apiKey) {
             return pgPool
                 .query(
