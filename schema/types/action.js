@@ -6,8 +6,8 @@ module.exports = new GraphQLObjectType({
     name: 'ActionType',
     fields: {
         id: { type: GraphQLID },
-        action_code: { type: GraphQLString },
-        action: { type: GraphQLString },
+        actionCode: { type: GraphQLString },
+        actions: { type: GraphQLString },
     },
 });
 
