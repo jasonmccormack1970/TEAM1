@@ -12,7 +12,8 @@ module.exports = new GraphQLObjectType({
             type: GraphQLString,
             resolve: (obj) => `${obj.firstName} ${obj.lastName}`,
         },
+        employeeRole: { type: GraphQLString },
         email: { type: new GraphQLNonNull(GraphQLString) },
-        employeeRole: {type:GraphQLString }     
     },
 });
+

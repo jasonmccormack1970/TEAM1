@@ -7,7 +7,7 @@ export default function example2() {
     return (
         <div>
             <h4 className="text-muted">EXAMPLE PAGE 2</h4>
-            <Me />
+            {/* <Me /> */}
             <UserTasks />
             <Users />
             <Tasks />

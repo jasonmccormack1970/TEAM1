@@ -19,6 +19,7 @@ const CustomerType = require('./types/customer');
 const UserType = require('./types/users');
 const EmployeeType = require('./types/employee');
 const TasksType = require('./types/task');
+const EmployeeType = require('./types/employee');
 
 // The root query type is where in the data graph begins
 const RootQueryType = new GraphQLObjectType({
