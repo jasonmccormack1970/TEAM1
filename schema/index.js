@@ -153,6 +153,20 @@ const RootMutationType = new GraphQLObjectType({
             },
         },
 
+        addNewEmployee: {
+            type: EmployeeType,
+            description: 'Add a new employee to the database',
+            args: {
+                firstName: { type: GraphQLString },
+                lastName: { type: GraphQLString },
+                employeeRole: { type: GraphQLString },
+                email: { type: new GraphQLNonNull(GraphQLString) },
+            
+            },
+            resolve(obj, args, { pgPool }) {
+                return pgdb(pgPool).addNewEmployee(args);
+            },
+        },
         // addNewCustomer: {
         //     type: CustomerType,
         //     description: 'Add a new customer record via the mock api',

@@ -81,5 +81,20 @@ module.exports = (pgPool) => {
                     return humps.camelizeKeys(res.rows[0]);
                 });
         },
+        addNewEmployee({ email, firstName, lastName, employeeRole }) {
+            return pgPool
+                .query(
+                    `
+                    INSERT INTO public.employee(
+                        email, first_name, last_name, employee_role)
+                        VALUES  ($1, $2, $3, $4)
+                    returning *
+                    `,
+                    [email, firstName, lastName, employeeRole],
+                )
+                .then((res) => {
+                    return humps.camelizeKeys(res.rows[0]);
+                });
+        },
     };
 };
