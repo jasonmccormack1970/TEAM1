@@ -16,3 +16,4 @@ module.exports = new GraphQLObjectType({
         email: { type: new GraphQLNonNull(GraphQLString) },
     },
 });
+
