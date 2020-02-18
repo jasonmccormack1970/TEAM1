@@ -19,7 +19,7 @@ export default function home() {
                 <div style={{ padding: '20px' }}>
                     <h6 className="lead font-weight-bold">Background</h6>
                     <div className="d-flex align-self-start">
-                        SpaceX is a company that launches rockets into space. They have had
+                        SpaceX is a Ltd company that launches rockets into space. They have had
                         successes and failures. In order to increase the successes, they realise
                         they need a plan for each rocket launch. This plan would have a description,
                         due date, status and detail all necessary actions for a successful launch.

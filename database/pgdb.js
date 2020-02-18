@@ -50,8 +50,7 @@ module.exports = (pgPool) => {
         getUserTasks(user) {
             return pgPool
                 .query(
-                    `
-        select * from tasks
+                    `select * from tasks
         where assignedto = $1
       `,
                     [user],
