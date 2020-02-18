@@ -64,6 +64,14 @@ const RootQueryType = new GraphQLObjectType({
             },
         },
 
+        Engineers: {
+            type: new GraphQLList(EmployeeType),
+            description: 'list all users from from Prostgres employee table',
+            resolve: (obj, args, { pgPool }) => {
+                return pgdb(pgPool).getAllEngineers();
+            },
+        },
+
         about_Me: {
             type: MeType,
             description: 'Infomation about me (logged in??) and task list from ProstgresDB',
