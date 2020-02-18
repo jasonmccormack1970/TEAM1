@@ -28,6 +28,12 @@ module.exports = (pgPool) => {
             });
         },
 
+        getAllActions() {
+            return pgPool.query(`select * from action`).then((res) => {
+                return humps.camelizeKeys(res.rows);
+            });
+        },
+
         getUser(apiKey) {
             return pgPool
                 .query(
