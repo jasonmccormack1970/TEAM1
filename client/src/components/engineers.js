@@ -7,9 +7,9 @@ import { Table } from 'react-bootstrap';
 import { P_LOADING, P_ERROR, CARD_STYLE } from '../styles/jsx_styles';
 
 // important to use back ticks
-const EMPLOYEE_QUERY = gql`
+const ENGINEER_QUERY = gql`
     query EmployeeQuery {
-        Employees {
+        Engineers {
             fullName
             email
             id
@@ -21,7 +21,7 @@ function employees() {
     return (
         <div>
             <div className="card" style={{ marginTop: '10px' }}>
-                <Query query={EMPLOYEE_QUERY}>
+                <Query query={ENGINEER_QUERY}>
                     {({ loading, error, data }) => {
                         if (loading) {
                             return <div style={P_LOADING}>Loading Data Please Wait ...</div>;
@@ -43,7 +43,7 @@ function employees() {
                             <div className="card">
                                 <div className="card-body" style={CARD_STYLE}>
                                     <h5 className="card-title text-muted">
-                                        GraphQL resolver returning all employees from Postgres table
+                                        GraphQL resolver returning all engineers from Postgres table
                                     </h5>
                                     <div>
                                         <Table striped bordered hover size="sm">
@@ -56,7 +56,7 @@ function employees() {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {data.Employees.map((item) => (
+                                                {data.Engineers.map((item) => (
                                                     <tr key={item.id}>
                                                         <td>{item.id}</td>
                                                         <td>{item.fullName}</td>
