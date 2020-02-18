@@ -3,5 +3,5 @@ module.exports = {
         database: 'todo',
         user: 'postgres',
         password: 'Andrew',
-    },
+},
 };
