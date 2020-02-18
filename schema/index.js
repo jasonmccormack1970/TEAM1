@@ -17,7 +17,6 @@ const MeType = require('./types/me');
 const LaunchType = require('./types/launch');
 const CustomerType = require('./types/customer');
 const UserType = require('./types/users');
-const EmployeeType = require('./types/employee');
 const TasksType = require('./types/task');
 const EmployeeType = require('./types/employee');
 
@@ -67,7 +66,7 @@ const RootQueryType = new GraphQLObjectType({
 
         Engineers: {
             type: new GraphQLList(EmployeeType),
-            description: 'list all users from from Prostgres employee table',
+            description: 'list all engineers from from Prostgres employee table',
             resolve: (obj, args, { pgPool }) => {
                 return pgdb(pgPool).getAllEngineers();
             },
