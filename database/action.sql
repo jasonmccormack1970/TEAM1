@@ -12,7 +12,7 @@ ALTER SEQUENCE public.action_id_seq
 	
 CREATE TABLE public.action
 (
-    id integer NOT NULL DEFAULT nextval('employee_id_seq'::regclass),
+    id integer NOT NULL DEFAULT nextval('action_id_seq'::regclass),
     action_code character varying(128) COLLATE pg_catalog."default",
     actions character varying(128) COLLATE pg_catalog."default",
     CONSTRAINT action_pkey PRIMARY KEY (id)
