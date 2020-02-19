@@ -30,6 +30,24 @@ module.exports = (pgPool) => {
                 });
         },
 
+        getAllEmployees() {
+            return pgPool.query(`select * from employee`).then((res) => {
+                return humps.camelizeKeys(res.rows);
+            });
+        },
+
+        getAllEngineers() {
+            return pgPool.query(`select * from employee where employee_role like '%engineer%'`).then((res) => {
+                return humps.camelizeKeys(res.rows);
+            });
+        },
+
+        getAllActions() {
+            return pgPool.query(`select * from action`).then((res) => {
+                return humps.camelizeKeys(res.rows);
+            });
+        },
+
         getTasks() {
             return pgPool.query(`select * from tasks`).then((res) => {
                 return humps.camelizeKeys(res.rows);
@@ -64,5 +82,22 @@ module.exports = (pgPool) => {
                     return humps.camelizeKeys(res.rows[0]);
                 });
         },
+
+        addNewEmployee({ first_name, last_name, employee_role, email }) {
+            return pgPool
+                .query(
+                    `
+                    INSERT INTO public.employee(
+                        first_name, last_name, employee_role, email)
+                        VALUES  ($1, $2, $3, $4)
+                    returning *
+                    `,
+                    [first_name, last_name, employee_role, email],
+                )
+                .then((res) => {
+                    return humps.camelizeKeys(res.rows[0]);
+                });
+        },
+
     };
 };

@@ -46,6 +46,9 @@ export const NavigationBar = () => (
                         <NavDropdown.Item href="/example4">
                             Example Page 4 - PostgresDB
                         </NavDropdown.Item>
+                        <NavDropdown.Item href="/spacex">
+                            SpaceX
+                        </NavDropdown.Item>
                         <NavDropdown.Divider />
                     </NavDropdown>
 

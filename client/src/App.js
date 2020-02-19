@@ -9,6 +9,7 @@ import Example2 from './pages/example2';
 import Example3 from './pages/example3';
 import Example4 from './pages/example4';
 import Empty from './pages/empty';
+import SpaceX from './pages/spacex';
 import MissingRoute from './pages/MissingRoute';
 
 import ApolloClient from 'apollo-boost';
@@ -36,6 +37,7 @@ function App(message) {
                                 <Route exact path="/example3" component={Example3} />
                                 <Route exact path="/example4" component={Example4} />
                                 <Route exact path="/empty" component={Empty} />
+                                <Route exact path="/spacex" component={SpaceX} />
                                 <Route component={MissingRoute} />
                             </Switch>
                         </Router>

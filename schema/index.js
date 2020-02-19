@@ -17,6 +17,8 @@ const MeType = require('./types/me');
 const LaunchType = require('./types/launch');
 const CustomerType = require('./types/customer');
 const UserType = require('./types/users');
+const EmployeeType = require('./types/employees');
+const ActionType = require('./types/actions');
 const TasksType = require('./types/task');
 
 // The root query type is where in the data graph begins
@@ -52,6 +54,30 @@ const RootQueryType = new GraphQLObjectType({
             description: 'list all users from from Prostgres user table',
             resolve: (obj, args, { pgPool }) => {
                 return pgdb(pgPool).getAllUsers();
+            },
+        },
+
+        Employees: {
+            type: new GraphQLList(EmployeeType),
+            description: 'list all employees from from Prostgres employee table',
+            resolve: (obj, args, { pgPool }) => {
+                return pgdb(pgPool).getAllEmployees();
+            },
+        },
+
+        Engineers: {
+            type: new GraphQLList(EmployeeType),
+            description: 'list all *engineers* from Prostgres employee table',
+            resolve: (obj, args, { pgPool }) => {
+                return pgdb(pgPool).getAllEngineers();
+            },
+        },
+        
+        Actions: {
+            type: new GraphQLList(ActionType),
+            description: 'list all actions from from Prostgres action table',
+            resolve: (obj, args, { pgPool }) => {
+                return pgdb(pgPool).getAllActions();
             },
         },
 
@@ -124,6 +150,20 @@ const RootMutationType = new GraphQLObjectType({
             },
             resolve(obj, args, { pgPool }) {
                 return pgdb(pgPool).addNewUser(args);
+            },
+        },
+
+        addNewEmployee: {
+            type: EmployeeType,
+            description: 'Add a new employee to the database',
+            args: {
+                first_name: { type: GraphQLString },
+                last_name: { type: GraphQLString },
+                employee_role: { type: GraphQLString },
+                email: { type: new GraphQLNonNull(GraphQLString) },
+            },
+            resolve(obj, args, { pgPool }) {
+                return pgdb(pgPool).addNewEmployee(args);
             },
         },
 

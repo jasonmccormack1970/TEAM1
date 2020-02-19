@@ -43,4 +43,23 @@ const addNewUserMutation = gql`
     }
 `;
 
-export { getUsersQuery, getDeptQuery, addNewUserMutation };
+
+const addNewEmployeeMutation = gql`
+    mutation(
+        $first_name: String
+        $last_name: String
+        $employee_role: String
+        $email: String!
+    ) {
+        addNewEmployee(
+            first_name: $first_name
+            last_name: $last_name
+            employee_role: $employee_role
+            email: $email
+        ) {
+            fullName
+        }
+    }
+`;
+
+export { getUsersQuery, getDeptQuery, addNewUserMutation, addNewEmployeeMutation };
