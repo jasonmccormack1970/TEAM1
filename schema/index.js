@@ -5,6 +5,7 @@ const {
     GraphQLString,
     GraphQLNonNull,
     GraphQLList,
+    GraphQLID,
     GraphQLInt,
     GraphQLInputObjectType,
 } = require('graphql');
@@ -108,6 +109,18 @@ const RootQueryType = new GraphQLObjectType({
             },
             resolve: (obj, args, { pgPool }) => {
                 return pgdb(pgPool).getUserTasks(args.key);
+            },
+        },
+
+        EmployeeActions: {
+            type: new GraphQLList(ActionType),
+            description: 'list actions from a selected employee',
+            args: {
+                // key: { type: new GraphQLNonNull(GraphQLString) },
+                key: { type: GraphQLID }
+            },
+            resolve: (obj, args, { pgPool }) => {
+                return pgdb(pgPool).getEmployeeActions(args.key);
             },
         },
 

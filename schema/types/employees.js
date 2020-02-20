@@ -1,4 +1,6 @@
-const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLNonNull } = require('graphql');
+const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLNonNull, GraphQLList } = require('graphql');
+
+const ActionType = require('./actions');
 
 const pgdb = require('../../database/pgdb');
 
@@ -13,6 +15,12 @@ module.exports = new GraphQLObjectType({
             resolve: (obj) => `${obj.firstName} ${obj.lastName}`,
         },
         employeeRole: { type: GraphQLString },
-        email: { type: new GraphQLNonNull(GraphQLString) }
-    },
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        actions: {
+            type: new GraphQLList(ActionType),
+            resolve: (obj, args, { pgPool }) => {
+                return pgdb(pgPool).getEmployeeActions(obj.id);
+            }
+        }
+    }
 });

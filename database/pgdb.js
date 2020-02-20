@@ -67,6 +67,20 @@ module.exports = (pgPool) => {
                 });
         },
 
+        getEmployeeActions(employee_id) {
+            return pgPool
+                .query(
+                    `
+        select action.* from action, employee_action
+        where action.id = employee_action.action_id and employee_id = $1
+      `,
+                    [employee_id],
+                )
+                .then((res) => {
+                    return humps.camelizeKeys(res.rows);
+                });
+        },
+
         addNewUser({ email, first_name, last_name, department, apikey }) {
             return pgPool
                 .query(

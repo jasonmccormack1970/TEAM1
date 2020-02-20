@@ -1,0 +1,21 @@
+query A {
+	EmployeeActions(key: 5) {
+    id
+    actionCode
+    actions
+  }
+}
+
+query B {
+  Employees {
+    id
+    fullName
+    employeeRole
+    email
+    actions {
+      id
+      actionCode
+      actions
+    }
+  }
+}
